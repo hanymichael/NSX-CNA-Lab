@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: sphinx-ing-rules
+spec:
+  rules:
+  - host: sphinx-v1.esxcloud.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: sphinx-svc-v1
+          servicePort: 80
+  - host: sphinx-v2.esxcloud.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: sphinx-svc-v2
+          servicePort: 80
