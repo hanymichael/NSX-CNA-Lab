@@ -1,0 +1,6 @@
+#!/bin/bash
+# Kube-Ignite Starter Add
+kubectl create -f sphinx-deployment-v1.yaml -n $1
+kubectl create -f sphinx-deployment-v2.yaml -n $1
+kubectl create -f sphinx-ingress-controller.yaml -n $1
+kubectl create -f sphinx-ingress-rules.yaml -n $1
