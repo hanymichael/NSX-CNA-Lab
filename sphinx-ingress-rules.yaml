@@ -4,14 +4,14 @@ metadata:
   name: sphinx-ing-rules
 spec:
   rules:
-  - host: sphinx-v1.esxcloud.net
+  - host: sphinx-v1.apps.hypervizor.com
     http:
       paths:
       - path: /
         backend:
           serviceName: sphinx-svc-v1
           servicePort: 80
-  - host: sphinx-v2.esxcloud.net
+  - host: sphinx-v2.apps.hypervizor.com
     http:
       paths:
       - path: /
