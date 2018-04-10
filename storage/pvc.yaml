@@ -3,7 +3,7 @@ apiVersion: v1
 metadata:
   name: sphinx-pvc
   annotations:
-    volume.beta.kubernetes.io/storage-class: NFS
+    volume.beta.kubernetes.io/storage-class: nfs
 spec:
   accessModes:
     - ReadWriteOnce
