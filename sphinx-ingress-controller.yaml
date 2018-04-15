@@ -5,7 +5,7 @@ metadata:
   labels:
     app: sphinx-ingress
   annotations:
-    ncp-nsx/ingress-controller: "True"
+    ncp/ingress-controller: "True"
 spec:
   replicas: 1
   selector:
