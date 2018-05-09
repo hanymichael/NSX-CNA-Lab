@@ -7,14 +7,14 @@ spec:
   - host: sphinx-v1.apps.hypervizor.com
     http:
       paths:
-      - path: /
+      - path: /*
         backend:
           serviceName: sphinx-svc-v1
           servicePort: 80
   - host: sphinx-v2.apps.hypervizor.com
     http:
       paths:
-      - path: /
+      - path: /*
         backend:
           serviceName: sphinx-svc-v2
           servicePort: 80
