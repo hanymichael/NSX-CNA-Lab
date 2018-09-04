@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: Config
+preferences: {}
+clusters:
+- cluster:
+  name: development-cluster
+- cluster:
+  name: production-cluster
+users:
+- name: dev-admin
+- name: prod-admin
+contexts:
+- context:
+  name: dev-cluster
+- context:
+  name: prod-cluster
+
+
+# ####### Set Clusters
+# kubectl config --kubeconfig=config-demo set-cluster development-cluster --server=https://192.168.50.28:6443 --certificate-authority=dev-cluster.crt
+# kubectl config --kubeconfig=config-demo set-cluster production-cluster --server=https://192.168.50.23:6443 --certificate-authority=prod-cluster.crt
+
+# ((OR -- insecure))
+# kubectl config --kubeconfig=config-demo set-cluster development-cluster --server=https://192.168.50.28:6443 --insecure-skip-tls-verify
+# kubectl config --kubeconfig=config-demo set-cluster production-cluster --server=https://192.168.50.23:6443 --insecure-skip-tls-verify
+
+# ####### Set Users
+# kubectl config --kubeconfig=config-demo set-credentials dev-admin --client-certificate=user-dev.crt --client-key=user-dev.key
+# kubectl config --kubeconfig=config-demo set-credentials prod-admin --client-certificate=user-prod.crt --client-key=user-prod.key
+
+# ((OR -- insecure))
+# kubectl config --kubeconfig=config-demo set-credentials dev-admin --username=dev-admin --password=vmware
+# kubectl config --kubeconfig=config-demo set-credentials prod-admin --username=prod-admin --password=vmware
+
+# ####### Set Context
+# kubectl config --kubeconfig=config-demo set-context dev-cluster --cluster=development-cluster --user=dev-admin
+# kubectl config --kubeconfig=config-demo set-context prod-cluster --cluster=production-cluster --user=prod-admin
+
+
+######## The Output
+# apiVersion: v1
+# clusters:
+# - cluster:
+#     certificate-authority: dev-cluster.crt
+#     server: 192.168.50.28:6443
+#   name: development-cluster
+# - cluster:
+#     certificate-authority: prod-cluster.crt
+#     server: 192.168.50.23:6443
+#   name: production-cluster
+# contexts:
+# - context:
+#     cluster: development-cluster
+#     user: dev-admin
+#   name: dev-cluster
+# - context:
+#     cluster: production-cluster
+#     user: prod-admin
+#   name: prod-cluster
+# current-context: ""
+# kind: Config
+# preferences: {}
+# users:
+# - name: dev-admin
+#   user:
+#     client-certificate: user-dev.crt
+#     client-key: user-dev.key
+# - name: prod-admin
+#   user:
+#     client-certificate: user-prod.crt
+#     client-key: user-prod.key
+
+
+
+
+
+
+
+
+
+
