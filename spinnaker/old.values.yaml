@@ -1,0 +1,23 @@
+# Define which registries and repositories you want available in your
+# Spinnaker pipeline definitions
+# For more info visit:
+#   https://www.spinnaker.io/setup/providers/docker-registry/
+
+# Configure your Docker registries here
+accounts:
+- name: dockerhub
+  address: https://index.docker.io
+  repositories:
+    - library/alpine
+    - library/ubuntu
+    - library/centos
+    - library/nginx
+    - hanymichael/sphinx-project
+    - hanymichael/sphinx-app
+kubeConfig:
+  enabled: true
+  secretName: kube-context-secret
+  secretKey: config
+  contexts:
+  # Names of contexts available in the uploaded kubeconfig
+  - ["development-cluster", "production-cluster"]

@@ -1,23 +1,25 @@
-# Define which registries and repositories you want available in your
-# Spinnaker pipeline definitions
-# For more info visit:
-#   https://www.spinnaker.io/setup/providers/docker-registry/
-
-# Configure your Docker registries here
-accounts:
+kubeConfig:
+  enabled: true
+  secretName: my-kubeconfig
+  secretKey: config
+  contexts:
+  # Names of contexts available in the uploaded kubeconfig
+  - kubeignite-centos-master-003
+  # This is the context from the list above that you would like
+  # to deploy Spinnaker itself to.
+  deploymentContext: kubeignite-centos-master-003
+dockerRegistries:
 - name: dockerhub
-  address: https://index.docker.io
+  address: index.docker.io
   repositories:
     - library/alpine
     - library/ubuntu
     - library/centos
     - library/nginx
     - hanymichael/sphinx-project
-    - hanymichael/sphinx-app
-kubeConfig:
-  enabled: true
-  secretName: kube-context-secret
-  secretKey: config
-  contexts:
-  # Names of contexts available in the uploaded kubeconfig
-  - ["development-cluster", "production-cluster"]
+    - hanymichael/sphinx-app    
+# - name: gcr
+#   address: https://gcr.io
+#   username: _json_key
+#   password: '<INSERT YOUR SERVICE ACCOUNT JSON HERE>'
+#   email: 1234@5678.com
