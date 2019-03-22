@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: sphinx-np-default-deny
+  namespace: sphinx-app
+spec:
+  podSelector: {}
+  policyTypes:
+    - Ingress
+    - Egress
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: sphinx-np-web
+  namespace: sphinx-app
+spec:
+  podSelector:
+    matchLabels:
+      app: sphinx-app-v1
+  policyTypes:
+    - Ingress
+  ingress:
+    - ports:
+        - protocol: TCP
+          port: 3000
+      #  from:
+      #   - ipBlock:
+      #       cidr: 100.64.32.0/24
