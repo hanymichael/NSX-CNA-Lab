@@ -12,12 +12,31 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: sphinx-np-web
+  name: sphinx-v1-np-web
   namespace: sphinx-app
 spec:
   podSelector:
     matchLabels:
       app: sphinx-app-v1
+  policyTypes:
+    - Ingress
+  ingress:
+    - ports:
+        - protocol: TCP
+          port: 3000
+      #  from:
+      #   - ipBlock:
+      #       cidr: 100.64.32.0/24
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: sphinx-v2-np-web
+  namespace: sphinx-app
+spec:
+  podSelector:
+    matchLabels:
+      app: sphinx-app-v2
   policyTypes:
     - Ingress
   ingress:
